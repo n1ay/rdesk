@@ -1,16 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h> /* include for ssite_t in vlc headers */
-#include <vlc/vlc.h>
+#include <unistd.h> /* include for sleep  */
+
+#include "media.h"
 
 int main() {
 
-    libvlc_instance_t* vlc_inst;
-    vlc_inst = libvlc_new(0, NULL);
+    libvlc_instance_t* libvlc_instance;
+    libvlc_media_player_t* media_player;
+    libvlc_media_t* media;
 
+    libvlc_instance = libvlc_new(0, NULL);
 
+    media = load_screen_as_media(libvlc_instance, 0, 0, 0, 0);
 
-    libvlc_release(vlc_inst);
-    
+    media_player = libvlc_media_player_new_from_media(media);
+    libvlc_media_release(media);
+
+    libvlc_media_player_play(media_player);
+    sleep(120);
+    libvlc_media_player_stop(media_player);
+
+    libvlc_release(libvlc_instance);
+
     return 0;
 }

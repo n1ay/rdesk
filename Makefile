@@ -9,10 +9,10 @@ LDIR = lib
 
 LIBS = -lvlc
 
-_DEPS =
+_DEPS = media.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o
+_OBJ = main.o media.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(IDIR)/%.c $(DEPS)
