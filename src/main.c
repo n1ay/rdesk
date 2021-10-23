@@ -9,6 +9,7 @@ int main() {
     libvlc_media_t* media;
 
     libvlc_instance = libvlc_new(0, NULL);
+    libvlc_add_intf(libvlc_instance, "dummy");
 
     media = load_screen_as_media(libvlc_instance, 0, 0, 0, 0);
 
