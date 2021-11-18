@@ -1,8 +1,21 @@
 #include <unistd.h> /* include for sleep  */
+#include <X11/extensions/XTest.h>
 
 #include "media.h"
+#include "socketserver.h"
+#include "inputevent.h"
 
 int main() {
+
+    Display* display;
+    display = NULL;
+    display = XOpenDisplay(NULL);
+    if (display == NULL) {
+        printf("Could not get display\n");
+        exit(CODE_ERROR);
+    }
+
+    int sockfd = init_server(display);
 
     libvlc_instance_t* libvlc_instance;
     libvlc_media_player_t* media_player;
