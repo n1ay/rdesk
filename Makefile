@@ -12,7 +12,7 @@ LIBS = -lvlc -lX11 -lXtst
 _DEPS = media.h socketserver.h inputevent.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o inputevent.o
+_OBJ = main.o socketserver.o inputevent.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(IDIR)/%.c $(DEPS)
